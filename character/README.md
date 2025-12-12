@@ -1,49 +1,37 @@
-# Character Queries (GraphQuest Task 0)
+# Character Queries (GraphQuest Tasks)
 
-This directory contains GraphQL queries to fetch specific characters by ID from the Rick and Morty GraphQL API.
+This directory contains GraphQL queries to fetch characters from the Rick and Morty GraphQL API.
 
 ## Endpoint
 
 [https://rickandmortyapi.com/graphql](https://rickandmortyapi.com/graphql)
 
-## Objective
+---
 
-Write GraphQL queries using the `character(id: ID!)` field to retrieve details of specific characters.
+## Task 0: Specific Character by ID
 
-### Fields requested
+- Queries: `character-id-1.graphql` → `character-id-4.graphql`
+- Outputs: `character-id-1-output.json` → `character-id-4-output.json`
+- Fields: id, name, status, species, type, gender
 
-- id
-- name
-- status
-- species
-- type
-- gender
+---
 
-## Files
+## Task 1: Paginated List of Characters
 
-- `characters-id-1.graphql` → Query for character with ID 1
-- `characters-id-1-output.json` → Output from API
-- `characters-id-2.graphql` → Query for character with ID 2
-- `characters-id-2-output.json` → Output from API
-- `characters-id-3.graphql` → Query for character with ID 3
-- `characters-id-3-output.json` → Output from API
-- `characters-id-4.graphql` → Query for character with ID 4
-- `characters-id-4-output.json` → Output from API
+- Queries: `characters-page-1.graphql` → `characters-page-4.graphql`
+- Outputs: `characters-page-1-output.json` → `characters-page-4-output.json`
+- Fields: id, name, status, image
 
-## Usage
-
-Run queries against the Rick and Morty GraphQL endpoint using a GraphQL client (Apollo Studio Explorer, GraphiQL, or curl).
-
-Example:
+### Example Query
 
 ```graphql
 query {
-  character(id: 1) {
-    id
-    name
-    status
-    species
-    type
-    gender
+  characters(page: 1) {
+    results {
+      id
+      name
+      status
+      image
+    }
   }
 }
